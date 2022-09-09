@@ -1,16 +1,16 @@
 import { elements } from "../fixtures/constants.js";
-
-describe('Should visit https://www.ilovepdf.com/ , and check the word to pdf conversion', () => {
+const { url, linksTitles, titleHome, word2pdfTitle, downloadTitle, downloadPageHeader, downloadBnt, pdfPath } = elements
+describe('Should visit https://www.ilovepdf.com/ , and check the word to pdf conversion functionality', () => {
   beforeEach(() => {
-    cy.visit('https://www.ilovepdf.com/');
+    cy.visit(url);
   })
-  it('should open https://www.ilovepdf.com/ and check the title', () => {
+  it(`should open ${url} and check the home page title`, () => {
     cy.get('#okck')
     .click()
     cy.get('Title')
-    .should('contain', 'iLovePDF | Online PDF tools for PDF lovers')
+    .should('contain', titleHome)
   })
-  it('should check the pdf tools links text and href attributes on the main page', () => {
+  it('should check the home page tools blocks text and href attributes', () => {
     cy.get('.tools__container > div > a')
     .as('list')
     .each($el => {
@@ -35,15 +35,15 @@ describe('Should visit https://www.ilovepdf.com/ , and check the word to pdf con
     .should('be.an', 'array')
     .then(arr => {
       for(let i = 0; i < arr.length; i++) {
-        expect(arr[i]).to.eq(elements[i])
+        expect(arr[i]).to.eq(linksTitles[i])
       }
       }) 
   })
-  it('should upload word file to the website', () => {
+  it('should check upload of prepaired word docx file to the "Word to PDF" page', () => {
     cy.contains('Word to PDF')
     .click()
     cy.get('title')
-    .should('have.text', 'Convert Word to PDF. Documents DOC to PDF')
+    .should('have.text', word2pdfTitle)
     cy.get('input[type="file"]')
     .as('uploadBtn')
     .should('have.css', 'opacity')
@@ -56,23 +56,26 @@ describe('Should visit https://www.ilovepdf.com/ , and check the word to pdf con
     .should('have.css', 'font-size')
     .should('include', '24px')
   })
-  it('should convert uploaded file to pdf and check the downloaded pdf file has been downloaded', () => {
+  it('should check the uploaded word file is converted to pdf and check the downloaded pdf file has the same text', () => {
     cy.contains('Word to PDF')
     .click()
-    cy.get('input[type="file"]')
+    cy.get('input[type="file"]', {timeout: 7000})
     .selectFile('cypress/fixtures/example.docx', { force: true })
-    cy.get('#processTask')
+    cy.get('#processTask', {timeout: 7000})
     .click()
     cy.get('title', {timeout: 7000})
-    .and('have.text', 'Download file | iLovePDF back')
+    .and('have.text', downloadTitle)
     cy.get('.title2')
-    .should('include.text', 'WORD file has been converted to PDF')
-    cy.get('#pickfiles')
+    .should('include.text', downloadPageHeader)
+    cy.screenshot()
+    cy.get('#pickfiles', {timeout: 7000})
     .as('downloadBtn')
     .should('have.attr', 'href')
     cy.get('@downloadBtn')
-    .should('contain.text', 'Download PDF')
-    cy.readFile('cypress/downloads/example.pdf', 'ASCII')
+    .should('contain.text', downloadBnt)
+    cy.readFile(pdfPath, 'ASCII')
     .should('exist')
+    cy.task('data', pdfPath)
+    .should('contain', 'Test text for pdf convertion')
   })
 })

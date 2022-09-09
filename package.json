@@ -8,10 +8,10 @@
     "test": "npx cypress open"
   },
   "keywords": [],
-  "author": "",
+  "author": "Valiantsin Lutchanka",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^10.7.0",
-    "pdf-parse": "^1.1.1"
+    "pdfreader": "^2.0.0"
   }
 }
