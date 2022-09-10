@@ -6,6 +6,7 @@ e2e: {
       on('task', {
         data
       })
-    }
+    },
+    baseUrl: 'https://www.ilovepdf.com/'
   }
 })

@@ -1,14 +1,15 @@
 import { elements } from "../fixtures/constants.js";
 const { url, linksTitles, titleHome, word2pdfTitle, downloadTitle, downloadPageHeader, downloadBnt, pdfPath } = elements
-describe('Should visit https://www.ilovepdf.com/ , and check the word to pdf conversion functionality', () => {
+describe(`Should visit ${url} , and check the word to pdf conversion functionality`, () => {
   beforeEach(() => {
-    cy.visit(url);
+    cy.visit('/');
   })
   it(`should open ${url} and check the home page title`, () => {
     cy.get('#okck')
     .click()
     cy.get('Title')
     .should('contain', titleHome)
+    cy.percySnapshot();
   })
   it('should check the home page tools blocks text and href attributes', () => {
     cy.get('.tools__container > div > a')
