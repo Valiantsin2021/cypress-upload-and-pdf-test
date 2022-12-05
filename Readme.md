@@ -2,7 +2,7 @@
 
 ## Percy integration added
 
-## To run test 
+## To run test
 
 npm install
 
