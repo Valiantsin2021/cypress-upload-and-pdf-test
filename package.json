@@ -5,8 +5,6 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "npx cypress open",
-    "percy": "npx percy exec -- cypress run",
     "lint": "eslint ./cypress/**/*.js",
     "format": "prettier --write .",
     "pre-commit": ["format", "lint"]
