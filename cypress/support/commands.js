@@ -1,5 +1,6 @@
 import "@percy/cypress";
 import { BrowserMultiFormatReader } from '@zxing/browser'
+import "cypress-real-events";
 
 const reader = new BrowserMultiFormatReader()
 Cypress.Commands.add('readCode', { prevSubject: true }, subject => {

@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "test": "npx cypress open",
-    "percy": "npx percy exec -- cypress run"
+    "percy": "npx percy exec -- cypress run",
+    "lint": "eslint ./cypress/**/*.js",
+    "format": "prettier --write .",
+    "pre-commit": ["format", "lint"]
   },
   "keywords": [],
   "author": "Valiantsin Lutchanka",
@@ -21,6 +24,7 @@
     "babel-eslint": "^10.1.0",
     "cypress": "^10.7.0",
     "cypress-axe": "^1.0.0",
+    "cypress-real-events": "^1.7.4",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-chai-friendly": "^0.7.2",
@@ -28,5 +32,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "pdfreader": "^2.0.0",
     "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "pre-commit": "^1.2.2"
   }
 }
