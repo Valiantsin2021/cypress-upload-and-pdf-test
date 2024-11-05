@@ -1,9 +1,0 @@
-{
-    "compilerOptions": {
-      "target":"ES2022",
-      "lib": ["ES2022", "dom"],
-      "allowJs": true,
-      "types": ["cypress", "node", "@percy/cypress", "cypress-axe"]
-    },
-    "include": ["**/*.*"]
-  } 

@@ -1,6 +1,6 @@
-import "@percy/cypress";
+import '@percy/cypress'
 import { BrowserMultiFormatReader } from '@zxing/browser'
-import "cypress-real-events";
+import 'cypress-real-events'
 
 const reader = new BrowserMultiFormatReader()
 Cypress.Commands.add('readCode', { prevSubject: true }, subject => {
@@ -11,4 +11,7 @@ Cypress.Commands.add('readCode', { prevSubject: true }, subject => {
   image.src = img.src
   image.crossOrigin = 'Anonymous'
   return reader.decodeFromImageElement(image)
+})
+Cypress.Commands.add('parseXlsx', inputFile => {
+  return cy.task('parseXlsx', { filePath: inputFile })
 })

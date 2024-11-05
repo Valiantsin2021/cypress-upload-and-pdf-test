@@ -1,0 +1,30 @@
+{
+  "jsonData": [
+    {
+      "name": "Test Case Template Example",
+      "data": [
+        "Your Company LOGO",
+        "Project Name:",
+        "Test Designed by:",
+        "Module Name:",
+        "Test Designed date: ",
+        "Release Version:",
+        "Test Executed by: ",
+        "Test Execution date: ",
+        "Pre-condition",
+        "Dependencies:",
+        "Test Priority",
+        "Test Case#",
+        "Test Title",
+        "Test Summary",
+        "Test Steps",
+        "Test Data",
+        "Expected Result",
+        "Post-condition",
+        "Actual Result",
+        "Status",
+        "Notes"
+      ]
+    }
+  ]
+}

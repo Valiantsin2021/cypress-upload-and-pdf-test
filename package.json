@@ -5,14 +5,20 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "lint": "eslint ./cypress/**/*.js",
-    "format": "prettier --write .",
-    "pre-commit": ["format", "lint"]
+    "test": "npx cypress open",
+    "percy": "npx percy exec -- cypress run",
+    "lint": "eslint ./cypress/e2e/*.js",
+    "format": "prettier --write ."
   },
+  "pre-commit": [
+    "format",
+    "lint"
+  ],
   "keywords": [],
   "author": "Valiantsin Lutchanka",
   "license": "ISC",
   "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.2.3",
     "@applitools/eyes-cypress": "^3.27.8",
     "@nuintun/qrcode": "^3.3.0",
     "@percy/cli": "^1.10.2",
@@ -20,6 +26,7 @@
     "@zxing/browser": "^0.1.1",
     "@zxing/library": "^0.19.1",
     "babel-eslint": "^10.1.0",
+    "chance": "^1.1.11",
     "cypress": "^10.7.0",
     "cypress-axe": "^1.0.0",
     "cypress-real-events": "^1.7.4",
@@ -28,6 +35,7 @@
     "eslint-plugin-chai-friendly": "^0.7.2",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "node-xlsx": "^0.21.0",
     "pdfreader": "^2.0.0",
     "prettier": "2.7.1"
   },
